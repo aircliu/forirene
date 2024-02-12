@@ -35,8 +35,8 @@ const IreneVideo = () => {
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', maxWidth: '80%', gap: '20px' }}>
         {/* GIFs on the left */}
         <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <img src={mymelody} alt="My Melody" style={{ width: '100%', marginBottom: '10px' }} />
-          <img src={mymelody2} alt="My Melody 2" style={{ width: '100%' }} />
+          <img src={mymelody} alt="My Melody" style={{ width: '50%', marginBottom: '10px' }} />
+          <img src={mymelody2} alt="My Melody 2" style={{ width: '50%' }} />
         </div>
         {/* Video */}
         <div style={{ flexGrow: 2 }}>
@@ -47,8 +47,8 @@ const IreneVideo = () => {
         </div>
         {/* GIFs on the right */}
         <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <img src={mymelody3} alt="My Melody 3" style={{ width: '100%', marginBottom: '10px' }} />
-          <img src={mymelody4} alt="My Melody 4" style={{ width: '100%' }} />
+          <img src={mymelody3} alt="My Melody 3" style={{ width: '50%', marginBottom: '10px' }} />
+          <img src={mymelody4} alt="My Melody 4" style={{ width: '50%' }} />
         </div>
       </div>
     </div>
