@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+
+.header {
+  text-align: center;
+  padding: 20px;
+  background-color: #ffccd5;
+  color: rgb(255, 0, 0);
+  font-size: 90px;
+  font-family: 'Lobster', cursive; /* Apply the theme font */
+  z-index: 2;
+  position: relative;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+  min-height: 400px; /* Adjust based on your content */
+}
+.centered-text {
+  width: 100%;
+  text-align: center;
+  font-size: 32px;
+  color: #ff6392;
+  padding: 20px 0;
+  font-family: 'Lobster', cursive; /* Apply the theme font */
+}
+
+
+/* Animation for the name "Irene" */
+@keyframes popUp {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+.name-effect {
+  display: inline-block;
+  animation: popUp 2s ease forwards;
+  font-size: 32px;
+  color: #ff6392;
+}
+
+/* Styles for falling hearts */
+.heart {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: red;
+  font-size: 2em;
+  animation: fall 5s linear forwards;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.heart::before {
+  transform: translateX(-50%);
+}
+
+.heart::after {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+@keyframes fall {
+  0% {
+    top: -50px; /* Start just above the viewport */
+  }
+  100% {
+    top: 100vh; /* End at the bottom of the viewport */
+  }
+}
+
+
+/* Existing styles... */
+
+.popup {
+  position: fixed;
+  z-index: 1000; /* Ensure it's above other content */
+  width: 200px; /* Adjusted width for bigger popup */
+  /* Optionally, if you want to specify a height as well, uncomment the next line */
+  /* height: auto; Ensures the height adjusts to maintain the image aspect ratio */
+  animation: popUp 1s ease forwards;
+}
+
+.popup img {
+  width: 100%; /* Make image fill the popup */
+  height: auto; /* Maintain aspect ratio */
+}
+
+
+@keyframes popUp {
+  0% {
+    transform: scale(0) translate(-50%, -50%);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(0.5) translate(-50%, -50%); /* Smaller scale for subtle effect */
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+/* Continue with existing or additional styles... */
+
+
+.response-buttons {
+  margin-top: 20px; /* Adjust spacing as needed */
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between buttons */
+}
+
+.yes-button, .no-button {
+  border: none;
+  color: white;
+  padding: 10px 20px; /* Adjust size as needed */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px; /* Adjust font size as needed */
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px; /* Optional: for rounded corners */
+}
+
+.yes-button {
+  background-color: #4CAF50; /* Green */
+}
+
+.no-button {
+  background-color: #f44336; /* Red */
+}
+
+
+
+.popups-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px; /* Adjust space between popup images */
+  margin-top: 20px; /* Space above the popup images */
+}
+
+.popup-image {
+  width: 400px; /* Adjust based on desired size */
+  height: auto;
+}
