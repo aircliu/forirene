@@ -30,25 +30,25 @@ const IreneVideo = () => {
   }, []);
 
   return (
-    <div ref={videoContainerRef} style={{ backgroundColor: '#FFC0CB', height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+    <div ref={videoContainerRef} style={{ backgroundColor: '#FFC0CB', height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', paddingTop: '10vh' }}>
       <h2 style={{ color: 'red', marginBottom: '20px', fontFamily: 'Lobster', fontSize: '70px' }}>You are my melody</h2>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', maxWidth: '80%', gap: '20px' }}>
         {/* GIFs on the left */}
-        <div style={{ display: 'flex', flexDirection: 'column', marginRight: '20px' }}>
-          <img src={mymelody} alt="My Melody" style={{ marginBottom: '10px', transform: 'scale(0.7)' }} />
-          <img src={mymelody2} alt="My Melody 2" style={{ transform: 'scale(0.7)' }} />
+        <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <img src={mymelody} alt="My Melody" style={{ width: '100%', marginBottom: '10px' }} />
+          <img src={mymelody2} alt="My Melody 2" style={{ width: '100%' }} />
         </div>
         {/* Video */}
-        <div style={{ width: '50%', maxWidth: '375px' }}>
+        <div style={{ flexGrow: 2 }}>
           <video controls autoPlay style={{ width: '100%' }}>
             <source src={irenevid} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
         {/* GIFs on the right */}
-        <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '20px' }}>
-          <img src={mymelody3} alt="My Melody 3" style={{ marginBottom: '10px', transform: 'scale(0.7)' }} />
-          <img src={mymelody4} alt="My Melody 4" style={{ transform: 'scale(0.7)' }} />
+        <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <img src={mymelody3} alt="My Melody 3" style={{ width: '100%', marginBottom: '10px' }} />
+          <img src={mymelody4} alt="My Melody 4" style={{ width: '100%' }} />
         </div>
       </div>
     </div>
