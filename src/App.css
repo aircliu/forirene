@@ -161,7 +161,17 @@
   animation: popUp 1s ease forwards;
 }
 
-.popup img {
-  width: 100%;
-  height: auto; /* Ensure images are responsive and maintain aspect ratio */
+/* Mobile styles - Assuming images are already styled perfectly for mobile */
+.popup-image {
+  width: 100%; /* or whatever is currently working well for mobile */
+  height: auto; /* maintain aspect ratio */
 }
+
+/* Desktop styles */
+@media (min-width: 768px) { /* Adjust the min-width as needed for your breakpoint */
+  .popup-image {
+    max-width: 30%; /* or whatever size you deem appropriate for desktop */
+    height: auto; /* maintain aspect ratio */
+  }
+}
+
