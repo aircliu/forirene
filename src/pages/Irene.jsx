@@ -55,63 +55,47 @@ function App() {
   const mainContentRef = useRef(null); // Ref for the hero section
   const [yesButtonSize, setYesButtonSize] = useState(100); // Initial size for "Yes" button text
   const [noButtonScale, setNoButtonScale] = useState(1); // Scale factor for "No" button
+  const [currentImageIndex, setCurrentImageIndex] = useState(Math.floor(Math.random() * ireneImages.length));
+  const [lastImageIndex, setLastImageIndex] = useState(-1); // Track the last image index to avoid repeats
   const navigate = useNavigate();
 
 
-
-
-  const generatePopup = () => {
-    if (mainContentRef.current) {
-      const mainRect = mainContentRef.current.getBoundingClientRect();
-      const randomIndex = Math.floor(Math.random() * ireneImages.length);
-      const randomTop = Math.floor(Math.random() * (mainRect.height - 150)); // Adjust based on main content height
-      const randomLeft = Math.floor(Math.random() * (mainRect.width - 150)); // Adjust based on main content width
-      const newPopup = {
-        id: Date.now(),
-        image: ireneImages[randomIndex],
-        style: {
-          top: `${randomTop}px`,
-          left: `${randomLeft}px`,
-          position: 'absolute', // Use absolute within the relative container
-        }
-      };
-      setPopups(currentPopups => [...currentPopups, newPopup]);
-
-      setTimeout(() => {
-        setPopups(currentPopups => currentPopups.filter(popup => popup.id !== newPopup.id));
-      }, 3000); // Remove the popup after 3 seconds
-    }
+  const selectRandomImage = () => {
+    let newIndex;
+    do {
+      newIndex = Math.floor(Math.random() * ireneImages.length);
+    } while (newIndex === currentImageIndex || newIndex === lastImageIndex);
+    setLastImageIndex(currentImageIndex);
+    setCurrentImageIndex(newIndex);
   };
 
   useEffect(() => {
-    const interval = setInterval(generatePopup, 2000); // Adjust timing as needed
-    return () => clearInterval(interval);
-  }, []);
+    const imageInterval = setInterval(selectRandomImage, 2000); // Adjust as needed
+    return () => clearInterval(imageInterval);
+  }, [currentImageIndex, lastImageIndex]);
 
-  const generateHearts = () => {
+  const generateHeart = () => {
     const heart = document.createElement('div');
-    heart.classList.add('heart');
-    heart.style.left = `${Math.random() * 100}vw`;
-    heart.style.animationDuration = `${Math.random() * 2 + 3}s`;
-    heart.style.animationTimingFunction = 'linear';
-    heart.style.animationFillMode = 'forwards';
-    heart.innerHTML = '&hearts;';
-    heart.style.color = 'red';
-    heart.style.fontSize = '20px';
+    heart.innerHTML = '❤️';
+    heart.style.cssText = `
+      position: absolute; // Changed to absolute to position within the container
+      color: red;
+      font-size: ${Math.random() * 20 + 10}px;
+      user-select: none;
+      left: ${Math.random() * rootRef.current.offsetWidth}px;
+      top: ${Math.random() * rootRef.current.offsetHeight}px;
+      animation: fall 5s linear forwards;
+    `;
+    rootRef.current.appendChild(heart);
 
-    if (rootRef.current) {
-      rootRef.current.appendChild(heart);
-    }
-
-    setTimeout(() => {
-      heart.remove();
-    }, Math.max(...[heart.style.animationDuration.slice(0, -1)]) * 1000 + 1000);
+    setTimeout(() => heart.remove(), 5000);
   };
-
   useEffect(() => {
-    const interval = setInterval(generateHearts, 300);
-    return () => clearInterval(interval);
+    const heartInterval = setInterval(generateHeart, 300); // Adjust as needed
+    return () => clearInterval(heartInterval);
   }, []);
+  
+
 
   const handleYesClick = () => {
     navigate('/video'); // Assuming '/video' is the path you want to redirect to
@@ -141,13 +125,9 @@ function App() {
            <button className="no-button" onClick={handleNoClick} style={{ transform: `scale(${noButtonScale})` }}>No</button>
         </div>
         {/* Popup images container */}
-        <div className="popups-container" ref={mainContentRef}>
-          {popups.map(popup => (
-            <img key={popup.id} src={popup.image} alt="Popup" className="popup-image" />
-          ))}
+        <img src={ireneImages[currentImageIndex]} alt="Irene" className="popup-image" />
         </div>
       </div>
-    </div>
   );
 }
 
