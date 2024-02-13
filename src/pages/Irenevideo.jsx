@@ -31,7 +31,7 @@ const IreneVideo = () => {
 
   return (
     <div ref={videoContainerRef} style={{ backgroundColor: '#FFC0CB', height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', paddingTop: '10vh' }}>
-      <h2 style={{ color: 'red', marginBottom: '20px', fontFamily: 'Lobster', fontSize: '70px' }}>You are my melody</h2>
+      <h2 style={{ color: 'red', marginBottom: '20px', fontFamily: 'Lobster', fontSize: '60px' }}>You are my melody</h2>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', maxWidth: '80%', gap: '20px' }}>
         {/* GIFs on the left */}
         <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

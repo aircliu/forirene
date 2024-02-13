@@ -111,7 +111,7 @@ function App() {
 
   return (
     <div className="App" ref={rootRef}>
-      <header className="header">Happy Valentine's Day!</header>
+      <header className="header">Since it's almost valentines day...</header>
       <div className="main-content">
         <div className="centered-text">Irene, will you be my valentine?</div>
         <div className="response-buttons">
