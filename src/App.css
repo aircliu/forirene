@@ -175,3 +175,132 @@
   }
 }
 
+/* Add this to your existing CSS file */
+
+.music-button {
+  background-color: #ff4081; /* Pink color to stand out */
+  color: white; /* White text for contrast */
+  border: none; /* No border for a cleaner look */
+  border-radius: 20px; /* Rounded corners */
+  padding: 10px 20px; /* Comfortable padding */
+  margin-top: 10px; /* Separate from other elements */
+  cursor: pointer; /* Indicate it's clickable */
+  font-size: 1rem; /* Accessible font size */
+  font-weight: bold; /* Make text bold */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  text-transform: uppercase; /* Uppercase text for emphasis */
+  font-family: 'Lobster', cursive; /* Consistent font family */
+}
+
+.music-button:hover {
+  background-color: #f50057; /* Slightly darker pink on hover */
+}
+
+/* Assuming music-button styles are already defined, replicate them for countdown-button */
+.countdown-button {
+  background-color: #ff4081; /* Same pink color */
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+  text-transform: uppercase;
+  font-family: 'Lobster', cursive; /* Keep the font consistent */
+}
+
+.countdown-button:hover {
+  background-color: #f50057; /* Darker pink on hover */
+}
+
+
+.slideshow-container {
+  text-align: center; /* Center-aligns the content */
+  width: 100%; /* Ensures the container takes up the full width */
+}
+
+.slideshow-header {
+  color: #FF4081; /* Pink color to match the button styles */
+  font-size: 2rem; /* Visible size on all devices */
+  margin-bottom: 20px; /* Space between the header and the slideshow */
+  font-family: 'Lobster', cursive; /* Stylish font */
+  padding: 20px 0; /* Padding for aesthetic spacing */
+}
+
+.slideshow-background {
+  /* Existing styles */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.slideshow-background img,
+.slideshow-background video {
+  /* Scale down the media to 40% of its original size (which is a 60% reduction) */
+  transform: scale(0.2);
+  transform-origin: center;
+}
+
+
+.slideshow-background {
+  background-color: #FFC0CB; /* Light pink background */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden; /* Keeps the hearts within the container */
+}
+
+.slideshow-controls {
+  position: absolute;
+  bottom: 10%; /* Adjust based on your layout */
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Maintain a reasonable gap between buttons */
+}
+
+.slide-button {
+  /* Adjust button size as necessary */
+  padding: 5px 10px;
+  font-size: 0.8rem; /* Smaller text */
+  border-radius: 20px; /* Rounded corners for aesthetics */
+  border: none; /* No border for a cleaner look */
+  background-color: #ff4081; /* Vibrant pink background */
+  color: white; /* White text for contrast */
+  cursor: pointer; /* Pointer cursor to indicate clickability */
+  font-weight: bold; /* Bold text for emphasis */
+  transition: background-color 0.3s; /* Smooth transition for visual feedback */
+  text-transform: uppercase; /* Uppercase text for a consistent look */
+  font-family: 'Lobster', cursive; /* Custom font for branding */
+  margin: 0 5px; /* Spacing between buttons */
+}
+
+
+.slide-button:hover {
+  background-color: #f50057; /* Darker shade on hover */
+}
+
+
+
+.days-since-met {
+  color: #FF4081; /* Pink color to match the button styles */
+  font-size: 1.5rem; /* Large enough to be noticeable */
+  text-align: center; /* Center the text */
+  margin-bottom: 10px; /* Add some space between the message and the slideshow */
+  font-family: 'Lobster', cursive; /* If you're using a specific font */
+}
+
+@media (min-width: 768px) { /* Adjust breakpoint as necessary */
+  .days-since-met {
+    font-size: 2rem; /* Larger size for desktop */
+    /* Other desktop-specific styles here */
+  }
+}

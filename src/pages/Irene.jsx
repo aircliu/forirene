@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
+import if_its_not_you from '../assets/if_its_not_you.mp3';
 
 import irene from '../assets/irene.jpg';
 import irene1 from '../assets/irene1.JPG';
@@ -58,6 +59,9 @@ function App() {
   const [currentImageIndex, setCurrentImageIndex] = useState(Math.floor(Math.random() * ireneImages.length));
   const [lastImageIndex, setLastImageIndex] = useState(-1); // Track the last image index to avoid repeats
   const navigate = useNavigate();
+  const audioRef = useRef(null);
+  const [showLyrics, setShowLyrics] = useState(false);
+
 
 
   const selectRandomImage = () => {
@@ -100,34 +104,75 @@ function App() {
   const handleYesClick = () => {
     navigate('/video'); // Assuming '/video' is the path you want to redirect to
   };
-  
+
+  const goToCountdown = () => {
+    navigate('/countdown'); // Assuming '/countdown' is the path you want to redirect to
+  };
 
   const handleNoClick = () => {
     setYesButtonSize(currentSize => currentSize + 150); // Increase "Yes" button size
     setNoButtonScale(currentScale => currentScale * 0.75); // Decrease size by 25%
   };
 
-  
+
+
+  // Function to play music, triggered by user interaction
+  const playMusic = () => {
+    if (audioRef.current) {
+      audioRef.current.play().catch((err) => console.error("Error playing audio:", err));
+      // Toggle lyrics visibility
+      setShowLyrics(true);
+    }
+  };
+
+  const Lyrics = () => (
+    <div className="lyrics">
+      <p>And all I see is you</p>
+      <p>'Cause all I know is you</p>
+      <p>I knew it right from the start</p>
+      <p>Doesn’t matter where you are</p>
+      <p>It's always been you</p>
+      <br />
+      <p>Tell me you’ll stay by me</p>
+      <p>'Cause darling you’re all I’ll need</p>
+      <p>And if its not you, no I’m not a fool</p>
+      <p>Just wish you would understand</p>
+      <p>You know that its you my love</p>
+      <p>Now I wanna know, how you feel</p>
+      <p>And if its not us, don’t want it at all</p>
+      <p>Just wish you would hold my hand</p>
+      <br />
+      <p>Oh, you know my feelings will never go change</p>
+      <p>For you, I can't get enough of your touch</p>
+      <p>I miss you today and tomorrow the same</p>
+      <br />
+      <p>Tell me you’ll stay by me</p>
+      <p>'Cause darling you’re all I’ll need</p>
+      <p>And if its not you, no I’m not a fool</p>
+      <p>Just wish you would understand</p>
+      <p>Just know that its you my love</p>
+      <p>Now I wanna know, how you feel</p>
+      <p>And if its not us, don’t want it at all</p>
+      <p>Just wish you would hold my hand</p>
+    </div>
+  );
 
   return (
     <div className="App" ref={rootRef}>
-      <header className="header">Since it's almost valentines day...</header>
+      <header className="header">HAPPY VALENTINES DAY</header>
       <div className="main-content">
-        <div className="centered-text">Irene, will you be my valentine?</div>
-        <div className="response-buttons">
-        <button
-            className="yes-button"
-            onClick={handleYesClick}
-            style={{ fontSize: `${yesButtonSize}%` }} // Dynamically adjust font size
-          >
-            Yes
-          </button>         
-           <button className="no-button" onClick={handleNoClick} style={{ transform: `scale(${noButtonScale})` }}>No</button>
-        </div>
-        {/* Popup images container */}
-        <img src={ireneImages[currentImageIndex]} alt="Irene" className="popup-image" />
-        </div>
+        <button onClick={playMusic} className="music-button">
+          A song made just for us...
+        </button>
+        <button onClick={goToCountdown} className="countdown-button">
+          Let's go back to countdown...
+        </button>
+        {/* Conditionally render Lyrics component based on showLyrics state */}
+        {showLyrics && <Lyrics />}
+        {/* The rest of your component */}
       </div>
+      <audio ref={audioRef} src={if_its_not_you} />
+    </div>
   );
 }
 
